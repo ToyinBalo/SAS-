@@ -1,0 +1,46 @@
+data mydata.female_report;
+	set sashelp.class;
+	if sex = 'F';
+	put 'female observation';
+run;
+
+/*distance formula*/
+/* data step used to create data*/
+/* proc step used to explore the data you created*/
+
+data distance;
+miles = 26.22;
+kilometers = 1.61*miles;
+run;
+
+proc print data = distance;
+run;
+
+data European_cars;
+set sashelp.cars;
+run;
+
+proc print data = European_cars;
+var make;
+run;
+
+proc means data = European_cars;
+var invoice;
+run;
+
+proc freq data = European_cars;
+table type make MSRP;
+run;
+
+proc univariate data = European_cars;
+var MSRP;
+run;
+
+/* import from laptop; I got error I need to learn how to import from my desktop.*/
+proc import datafile = "BBD MERCHANT PERFORMANCE  18TH AUGUST 2020"
+DBMS=excel OUT=DIVISIONNAME; RUN; *ERROR;
+
+delimiter=' '; /* proc syntax used for specification*/
+getnames=yes;
+datarow=2;
+run;
